@@ -1,0 +1,36 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/ALU.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/BranchDecisionMaking.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module BranchDecisionMaking
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/CSRFile.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CSRFile
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/ControlUnit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ControlUnit
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/DataExt.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DataExt
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/BRAMModule/DataRam.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DataRam
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/EXSegReg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module EXSegReg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/HarzardUnit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module HarzardUnit
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/IDSegReg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IDSegReg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/IFSegReg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IFSegReg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/ImmOperandUnit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ImmOperandUnit
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/BRAMModule/InstructionRam.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module InstructionRam
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/MEMSegReg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MEMSegReg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/NPC_Generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module NPC_Generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/RV32Core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module RV32Core
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/RegisterFile.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module RegisterFile
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/WBSegReg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module WBSegReg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/ComputerArchitecture/lab2/project_1/project_1.sim/testBench.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module testBench

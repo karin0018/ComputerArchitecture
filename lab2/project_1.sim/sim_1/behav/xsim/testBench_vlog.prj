@@ -1,0 +1,26 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../project_1.ip_user_files/ALU.v" \
+"../../../../project_1.ip_user_files/BranchDecisionMaking.v" \
+"../../../../project_1.ip_user_files/CSRFile.v" \
+"../../../../project_1.ip_user_files/ControlUnit.v" \
+"../../../../project_1.ip_user_files/DataExt.v" \
+"../../../../project_1.ip_user_files/BRAMModule/DataRam.v" \
+"../../../../project_1.ip_user_files/EXSegReg.v" \
+"../../../../project_1.ip_user_files/HarzardUnit.v" \
+"../../../../project_1.ip_user_files/IDSegReg.v" \
+"../../../../project_1.ip_user_files/IFSegReg.v" \
+"../../../../project_1.ip_user_files/ImmOperandUnit.v" \
+"../../../../project_1.ip_user_files/BRAMModule/InstructionRam.v" \
+"../../../../project_1.ip_user_files/MEMSegReg.v" \
+"../../../../project_1.ip_user_files/NPC_Generator.v" \
+"../../../../project_1.ip_user_files/RV32Core.v" \
+"../../../../project_1.ip_user_files/RegisterFile.v" \
+"../../../../project_1.ip_user_files/WBSegReg.v" \
+"../../../testBench.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

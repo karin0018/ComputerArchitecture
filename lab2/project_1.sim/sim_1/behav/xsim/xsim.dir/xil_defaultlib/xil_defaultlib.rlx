@@ -1,0 +1,24 @@
+0.6
+2019.1
+May 24 2019
+15:06:07
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/ALU.v,1620618146,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/BranchDecisionMaking.v,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/Parameters.v,ALU,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/BRAMModule/DataRam.v,1618812311,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/EXSegReg.v,,DataRam,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/BRAMModule/InstructionRam.v,1618812311,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/MEMSegReg.v,,InstructionRam,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/BranchDecisionMaking.v,1620307398,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/CSRFile.v,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/Parameters.v,BranchDecisionMaking,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/CSRFile.v,1620578831,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/ControlUnit.v,,CSRFile,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/ControlUnit.v,1620620994,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/DataExt.v,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/Parameters.v,ControlUnit,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/DataExt.v,1620615839,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/BRAMModule/DataRam.v,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/Parameters.v,DataExt,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/EXSegReg.v,1620605330,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/HarzardUnit.v,,EXSegReg,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/HarzardUnit.v,1620577944,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/IDSegReg.v,,HarzardUnit,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/IDSegReg.v,1620198827,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/IFSegReg.v,,IDSegReg,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/IFSegReg.v,1618812311,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/ImmOperandUnit.v,,IFSegReg,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/ImmOperandUnit.v,1620619502,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/BRAMModule/InstructionRam.v,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/Parameters.v,ImmOperandUnit,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/MEMSegReg.v,1620572341,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/NPC_Generator.v,,MEMSegReg,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/NPC_Generator.v,1620199528,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/RV32Core.v,,NPC_Generator,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/Parameters.v,1620560953,verilog,,,,,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/RV32Core.v,1620605371,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/RegisterFile.v,,RV32Core,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/RegisterFile.v,1620556087,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/WBSegReg.v,,RegisterFile,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.ip_user_files/WBSegReg.v,1620572432,verilog,,D:/ComputerArchitecture/lab2/project_1/project_1.sim/testBench.v,,WBSegReg,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.sim/sim_1/behav/xsim/glbl.v,1558713910,verilog,,,,glbl,,,,,,,,
+D:/ComputerArchitecture/lab2/project_1/project_1.sim/testBench.v,1620617763,verilog,,,,testBench,,,,,,,,
