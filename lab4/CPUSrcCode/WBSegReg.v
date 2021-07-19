@@ -1,0 +1,173 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: USTC ESLAB
+// Engineer: Wu Yuzhang
+//
+// Design Name: RISCV-Pipline CPU
+// Module Name: WBSegReg
+// Target Devices: Nexys4
+// Tool Versions: Vivado 2017.4.1
+// Description: Write Back Segment Register
+//////////////////////////////////////////////////////////////////////////////////
+//功能说明
+    //WBSegReg是Write Back段寄存器，
+    //类似于IDSegReg.V中对Bram的调用和拓展，它同时包含了一个同步读写的Bram
+    //（此处你可以调用我们提供的InstructionRam，它将会自动综合为block memory，你也可以替代性的调用xilinx的bram ip核）。
+    //同步读memory 相当于 异步读memory 的输出外接D触发器，需要时钟上升沿才能读取数据。
+    //此时如果再通过段寄存器缓存，那么需要两个时钟上升沿才能将数据传递到Ex段
+    //因此在段寄存器模块中调用该同步memory，直接将输出传递到WB段组合逻辑
+    //调用mem模块后输出为RD_raw，通过assign RD = stall_ff ? RD_old : (clear_ff ? 32'b0 : RD_raw );
+    //从而实现RD段寄存器stall和clear功能
+//实验要求
+    //你需要补全WBSegReg模块，需补全的片段截取如下
+    //DataRam DataRamInst (
+    //    .clk    (???),                      //请完善代码
+    //    .wea    (???),                      //请完善代码
+    //    .addra  (???),                      //请完善代码
+    //    .dina   (???),                      //请完善代码
+    //    .douta  ( RD_raw         ),
+    //    .web    ( WE2            ),
+    //    .addrb  ( A2[31:2]       ),
+    //    .dinb   ( WD2            ),
+    //    .doutb  ( RD2            )
+    //);
+//注意事项
+    //输入到DataRam的addra是字地址，一个字32bit
+    //请配合DataExt模块实现非字对齐字节load
+    //请通过补全代码实现非字对齐store
+
+
+module WBSegReg(
+    input wire clk,
+    input wire rst,
+    input wire en,
+    input wire clear,
+    //Data Memory Access
+    input wire [31:0] A,
+    input wire [31:0] WD,
+    input wire [3:0] WE, // MemWrite 四位信号，每一位代表一个字节
+    output wire [31:0] RD,
+    output reg [1:0] LoadedBytesSelect,
+    //Data Memory Debug
+    input wire [31:0] A2,
+    input wire [31:0] WD2,
+    input wire [3:0] WE2,
+    output wire [31:0] RD2,
+    //input control signals
+    input wire [31:0] ResultM,
+    output reg [31:0] ResultW,
+    input wire [4:0] RdM,
+    output reg [4:0] RdW,
+    //output constrol signals
+    input wire [2:0] RegWriteM,
+    output reg [2:0] RegWriteW,
+    input wire MemToRegM,
+    output reg MemToRegW,
+    // csr signal
+    input wire CSR_write_enM,
+    output reg CSR_write_enW,
+    input wire [11:0] CSR_addrM,
+    output reg [11:0] CSR_addrW,
+    input wire [31:0] CSR_dataM,
+    output reg [31:0] CSR_dataW,
+    input wire [31:0] CSR_OriginDataM,
+    output reg [31:0] CSR_OriginDataW,
+    // add data cache miss signal
+    output wire DCacheMiss
+    );
+
+    //
+    initial begin
+        LoadedBytesSelect = 2'b00;
+        RegWriteW         =  1'b0;
+        MemToRegW         =  1'b0;
+        ResultW           =     0;
+        RdW               =  5'b0;
+        // csr signal
+        CSR_write_enW = 1'b0;
+        CSR_addrW = 12'b0;
+        CSR_dataW = 32'b0;
+        CSR_OriginDataW = 32'b0;
+    end
+    //
+    always@(posedge clk)
+        if(en) begin
+            LoadedBytesSelect <= clear ? 2'b00 : A[1:0];
+            RegWriteW         <= clear ?  1'b0 : RegWriteM;
+            MemToRegW         <= clear ?  1'b0 : MemToRegM;
+            ResultW           <= clear ?     0 : ResultM;
+            RdW               <= clear ?  5'b0 : RdM;
+            // csr signal
+            CSR_write_enW <= clear ? 1'b0 : CSR_write_enM;
+            CSR_addrW <= clear ? 12'b0 : CSR_addrM;
+            CSR_dataW <= clear ? 32'b0 : CSR_dataM;
+            CSR_OriginDataW <= clear ? 32'b0 : CSR_OriginDataM;
+        end
+
+
+    // ---------- miss/hit count ----------
+    reg miss_before = 1'b0;
+    reg [31:0] miss_count = 32'b0;
+    reg [31:0] hit_count = 32'b0;
+    always @(posedge clk or posedge rst) begin
+        if(rst) begin // debug
+            miss_before <= 1'b0;
+            miss_count <= 0;
+            hit_count <= 0;
+        end
+        else begin
+            if(!DCacheMiss & ((|WE) | MemToRegM)) begin
+                if(miss_before) begin
+                // DCacheMiss 会持续多个时钟周期，为了确保不重复计数，只在 miss->hit 这个变化的阶段 miss_count++
+                    miss_count <= miss_count + 1;
+                end
+                else begin
+                    hit_count <= hit_count + 1;
+                end
+            end
+            miss_before <= DCacheMiss;
+        end
+
+    end
+
+    wire [31:0] RD_raw;
+    // DataRam DataRamInst (
+    //     .clk    (clk),                      //请完善代码
+    //     .wea    (WE<<A[1:0]),               // 写使能信号
+    //     .addra  (A[31:2]),                  // 写地址
+    //     .dina   (WD<<(8*A[1:0])),           // 写数据 - 左移原理对应 wea, 字节位置写使能，就应该把数据移动到相应的位置上去。
+    //     .douta  ( RD_raw         ),
+    //     .web    ( WE2            ),
+    //     .addrb  ( A2[31:2]       ),
+    //     .dinb   ( WD2            ),
+    //     .doutb  ( RD2            )
+    // );
+    // wire write_en = (WE ==4'b1111)? 1'b1:1'b0;
+
+    cache DataCache (
+        .clk(clk),
+        .rst(rst),
+        .addr(A),
+        .miss(DCacheMiss),               // 对CPU发出的miss信号
+        .rd_req(MemToRegM),             // 读请求信号
+        .rd_data(RD_raw), // 读出的数据，一次读一个word
+        .wr_req(|WE),             // 写请求信号
+        .wr_data(WD)
+    );
+    // Add clear and stall support
+    // if chip not enabled, output output last read result
+    // else if chip clear, output 0
+    // else output values from bram
+    // 以下部分无需修改
+    reg stall_ff= 1'b0;
+    reg clear_ff= 1'b0;
+    reg [31:0] RD_old=32'b0;
+    always @ (posedge clk)
+    begin
+        stall_ff<=~en;
+        clear_ff<=clear;
+        RD_old<=RD_raw;
+    end
+    assign RD = stall_ff ? RD_old : (clear_ff ? 32'b0 : RD_raw );
+
+endmodule
