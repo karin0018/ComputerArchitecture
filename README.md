@@ -1,4 +1,4 @@
-# ComputerArchitecture
+# USTC_2021_Spring_ComputerArchitecture
 2021年春计算机体系结构试验。
 
 lab x ： 已经完成的实验源代码和实验报告；
